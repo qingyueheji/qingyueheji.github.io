@@ -1,0 +1,76 @@
+.modal-body.d-flex.justify-content-center .container-box.imageBox {
+  cursor: move;
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 61.0625rem;
+  height: 34.375rem;
+  min-width: 61.0625rem;
+  min-height: 34.375rem;
+  border-radius: 0.1875rem;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(170, 170, 170, 0.5);
+  -moz-box-shadow: 0rem 0rem 0.1875rem rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0rem 0rem 0.1875rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0rem 0rem 0.1875rem rgba(0, 0, 0, 0.2); }
+  .modal-body.d-flex.justify-content-center .container-box.imageBox .thumbBox {
+    position: absolute;
+    top: 8.53125rem;
+    left: 15.21875rem;
+    width: 30.53125rem;
+    height: 17.1875rem;
+    min-width: 30.53125rem;
+    min-height: 17.1875rem;
+    box-sizing: border-box;
+    border-radius: 0.1875rem;
+    border: 1px solid #666666;
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    background: none repeat scroll 0 0 transparent; }
+  .modal-body.d-flex.justify-content-center .container-box.imageBox .spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    line-height: 400px;
+    color: #2F2A2A;
+    background: rgba(213, 211, 211, 0.7); }
+
+.modal-body.d-flex.justify-content-center .img-preview {
+  height: 34.375rem;
+  width: 23.75rem;
+  min-height: 34.375rem;
+  min-width: 23.75rem; }
+  .modal-body.d-flex.justify-content-center .img-preview .preview-img,
+  .modal-body.d-flex.justify-content-center .img-preview .preview-txt {
+    width: 100%;
+    border: 1px solid #bcbaba; }
+  .modal-body.d-flex.justify-content-center .img-preview .preview-img {
+    height: 13.3125rem;
+    min-height: 13.3125rem;
+    border-radius: 0.1875rem;
+    overflow: hidden;
+    cursor: pointer;
+    margin-top: 0.0625rem; }
+    .modal-body.d-flex.justify-content-center .img-preview .preview-img img {
+      -moz-transition: all 1s ease;
+      -webkit-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      transition: all 1s ease;
+      transition: all 1s;
+      opacity: 1; }
+    .modal-body.d-flex.justify-content-center .img-preview .preview-img img:hover {
+      transform: scale(1.1);
+      opacity: .9; }
+    .modal-body.d-flex.justify-content-center .img-preview .preview-img img {
+      width: 23.75rem;
+      height: 13.3125rem;
+      min-width: 23.75rem;
+      min-height: 13.3125rem; }
+  .modal-body.d-flex.justify-content-center .img-preview .preview-txt {
+    border: none;
+    height: 7.625rem;
+    min-height: 7.625rem; }

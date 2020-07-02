@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>今夕何夕 - 首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap-vue.min.css">
+    <link rel="stylesheet" href="assets/plugins/font-awesome/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/index/personal.css">
+    <style>
+        .menu-wrap {
+            position: fixed !important;
+            top: 2.75rem !important; }
+
+        .wrap-content {
+            position: relative;
+            top: 5.5rem; }
+
+    </style>
+    <script>
+        var positionMenu = false;
+    </script>
+</head>
+<body>
+<!-- Pre Loader-->
+<div class="loader-wrapper">
+    <div class="spinner">
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="length" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+    </div>
+</div>
+<!-- Pre Loader-->
+
+<!-- Header-->
+<b-navbar toggleable="sm" type="dark" fixed="top">
+    <b-navbar-brand href="#">今夕何夕</b-navbar-brand>
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+    <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav class="ml-auto">
+            <b-nav-item href="index.html">首页</b-nav-item>
+            <b-nav-item href="list.html">列表</b-nav-item>
+            <b-nav-item href="details.html">详情</b-nav-item>
+            <b-nav-item href="publish.html">发布</b-nav-item>
+            <b-nav-item-dropdown text="个人中心" right>
+                <b-dropdown-item href="personal.html">个人中心</b-dropdown-item>
+                <b-dropdown-item href="#">退出登录</b-dropdown-item>
+            </b-nav-item-dropdown>
+        </b-navbar-nav>
+    </b-collapse>
+</b-navbar>
+
+<!--导航菜单-->
+<b-container fluid class="menu-wrap">
+    <b-container fluid class="menu-wrap-nav">
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z1"><i class="fa fa-paint-brush"></i>&nbsp;UI <i class="fa fa-angle-down"></i></b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z2"><i class="fa fa-keyboard-o"></i>&nbsp;输入 <i class="fa fa-angle-down"></i></b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z3"><i class="fa fa-film"></i>&nbsp;媒体 <i class="fa fa-angle-down"></i></b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z4"><i class="fa fa-paper-plane-o"></i>&nbsp;导航 <i class="fa fa-angle-down"></i></b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z5"><i class="fa fa-dropbox"></i>&nbsp;其他 <i class="fa fa-angle-down"></i></b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i class="fa fa-th-large"></i>&nbsp;网页模板</b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i class="fa fa-tablet"></i>&nbsp;APP模板</b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i class="fa fa-file-code-o"></i>&nbsp;常用代码</b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i class="fa fa-code"></i>&nbsp;在线代码</b-link>
+    </b-container>
+    <b-container @mouseenter.stop="enterMenuContent" @mouseleave.stop="leaveMenuContent" fluid class="menu-content" ref="menu-content" style="display: none;">
+        <b-container>
+            <b-row ref="z1" style="display: none;">
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-delicious"></i>背景</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-bell-o"></i>对话框</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-sort-numeric-desc"></i>筛选及排序</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-comments-o"></i>反馈</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-stack-overflow"></i>弹出层</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-hand-o-up"></i>悬停</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-th-large"></i>布局</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-bar-chart"></i>图表</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-spinner"></i>加载</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-circle-o"></i>圆边</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-long-arrow-down"></i>滚动</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-tags"></i>标签</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-link"></i>文本链接</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-info-circle"></i>工具提示</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-code-fork"></i>网络类型</b-link>
+                </b-col>
+            </b-row>
+            <b-row ref="z2" style="display: none;">
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-eyedropper"></i>拾色器</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-paint-brush"></i>定制和风格</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-clock-o"></i>日期和时间</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-arrows"></i>拖和放</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-keyboard-o"></i>通用输入</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-calculator"></i>自动完成</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-lock"></i>密码</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-thumbs-up"></i>投票率</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-search"></i>搜索</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-caret-square-o-down"></i>选择框</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-adn"></i>快捷键</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-hand-o-down"></i>触摸</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-h-square"></i>丰富的输入</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-upload"></i>上传</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-key"></i>验证</b-link>
+                </b-col>
+            </b-row>
+            <b-row ref="z3" style="display: none;">
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-play-circle-o"></i>音频和视频</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-exchange"></i>幻灯片和轮播图</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-eye"></i>图片展示</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-picture-o"></i>图像</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-map-marker"></i>地图</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-arrows-h"></i>滑块和旋转</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-folder-o"></i>Tabs</b-link>
+                </b-col>
+            </b-row>
+            <b-row ref="z4" style="display: none;">
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-long-arrow-right"></i>水平导航</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-long-arrow-down"></i>垂直导航</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-sitemap"></i>文件树</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-chevron-right"></i>分页</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-trello"></i>手风琴菜单</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-location-arrow"></i>其他导航</b-link>
+                </b-col>
+            </b-row>
+            <b-row ref="z5" style="display: none;">
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-rocket"></i>动画效果</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-expand"></i>浏览/预览器调整</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-arrows-v"></i>移动</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-cogs"></i>独立的部件</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-gift"></i>杂项</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-gamepad"></i>游戏</b-link>
+                </b-col>
+            </b-row>
+        </b-container>
+    </b-container>
+</b-container>
+
+<!-- 内容 -->
+<b-container fluid class="wrap-content">
+    <b-container>
+        <section class="wrapper container">
+            <aside class="sidebar">
+                <div class="navbar navbar-dark bg-primary mb5">
+                    <div class="navbar-images">
+                        <b-img src="assets/images/mv0.png" alt="assets/images/mv0.png" />
+                    </div>
+                    <b-link class="navbar-brand brand-title" data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="今夕何夕今夕何夕今夕何夕" href="#">今夕何夕今夕何夕今夕何夕</b-link>
+                    <span></span>
+                    <b-link class="fa fa-bars navbar-brand toggle-sidebar" href="javascript:void(0)"></b-link>
+                </div>
+                <ul class="navigation">
+                    <li class="list-group">
+                        <b-link href="#" class="list-group-item list-group-item-action d-flex justify-content-between"><i class="fa fa-user-secret">&nbsp;&nbsp;&nbsp;用户信息</i></b-link>
+                        <b-link href="#" class="list-group-item list-group-item-action d-flex justify-content-between"><i class="fa fa-commenting-o">&nbsp;&nbsp;&nbsp;消息浏览/预览</i><span class="badge badge-primary badge-pill">14</span></b-link>
+                        <b-link href="#" class="list-group-item list-group-item-action d-flex justify-content-between selected"><i class="fa fa-file-word-o">&nbsp;&nbsp;&nbsp;资源管理</i><span class="badge badge-primary badge-pill">14</span></b-link>
+                        <b-link href="#" class="list-group-item list-group-item-action d-flex justify-content-between"><i class="fa fa-heart-o">&nbsp;&nbsp;&nbsp;收藏管理</i><span class="badge badge-primary badge-pill">14</span></b-link>
+                        <b-link href="#" class="list-group-item list-group-item-action d-flex justify-content-between"><i class="fa fa-eye">&nbsp;&nbsp;&nbsp;关注的人</i><span class="badge badge-primary badge-pill">14</span></b-link>
+                        <b-link href="#" class="list-group-item list-group-item-action d-flex justify-content-between"><i class="fa fa-tachometer">&nbsp;&nbsp;&nbsp;主题更换</i></b-link>
+                        <b-link href="#" class="list-group-item list-group-item-action d-flex justify-content-between"><i class="fa fa-eraser">&nbsp;&nbsp;&nbsp;数据回收</i></b-link>
+                    </li>
+                    <li class="list-group">
+                        <b-link href="#" class="list-group-item list-group-item-action d-flex justify-content-between"><i class="fa fa-paper-plane-o">&nbsp;&nbsp;&nbsp;发表帖子</i></b-link>
+                    </li>
+                    <li class="list-group">
+                        <b-link href="#" class="list-group-item list-group-item-action d-flex justify-content-between"><i class="fa fa-sign-out">&nbsp;&nbsp;&nbsp;退出登录</i></b-link>
+                    </li>
+                </ul>
+            </aside>
+
+            <div class="content-area">
+                <b-row>
+                    <b-col v-for="(item, index) in demo" class="featured" cols="12" sm="6" md="4">
+                        <article class="card">
+                            <div class="card-img-box">
+                                <b-link>
+                                    <div class="card-img-top" style="background-image:url(assets/images/mv28.png);"></div>
+                                </b-link>
+                            </div>
+                            <b-card-body>
+                                <h6 class="card-title"><b-link href="#">Card title</b-link></h6>
+                                <p class="card-text synopsis">使用vue实现的高阶贝塞尔曲线编辑器，以及用BezierCurve模拟复杂动画的Demo使用vue实现的高阶贝塞尔曲线编辑器，以及用BezierCurve模拟复杂动画的Demo</p>
+                                <p class="card-text category"><i class="fa fa-list-ul"></i>&nbsp;分类</p>
+                            </b-card-body>
+                            <b-card-footer>
+                                <b-container fluid>
+                                    <b-row>
+                                        <b-col class="heart"><i class="fa fa-eye"></i>&nbsp;99<i class="fa fa-heart"></i>&nbsp;555</b-col>
+                                        <div class="secret"><b-link href="#"><i class="fa fa-user-secret"></i></b-link></div>
+                                    </b-row>
+                                </b-container>
+                            </b-card-footer>
+                        </article>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</b-container>
+
+</body>
+
+<script src="assets/plugins/jquery-1.11.1.min.js"></script>
+<script src="assets/js/personal.js"></script>
+<script src="assets/plugins/vue/vue.min.js"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap-vue.min.js"></script>
+<script src="assets/js/index.js"></script>
+</html>

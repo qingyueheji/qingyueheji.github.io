@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据发布</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap-vue.min.css">
+    <link rel="stylesheet" href="assets/plugins/font-awesome/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/editor.md/css/editormd.css">
+    <link rel="stylesheet" href="assets/css/index/publish.css">
+</head>
+<body data-spy="scroll" style="height: 100%">
+<!-- Pre Loader-->
+<div class="loader-wrapper">
+    <div class="spinner">
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="length" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+    </div>
+</div>
+<!-- Pre Loader-->
+
+<div id="editormd">
+    <textarea style="display: none">
+![MdEditor](assets/images/editormd-logo-180x180.png "MdEditor")
+
+## MdEditor的功能列表演示
+
+# 标题H1
+
+## 标题H2
+
+### 标题H3
+
+#### 标题H4
+
+##### 标题H5
+
+###### 标题H5
+
+### 字符效果和横线等
+----
+
+~~删除线~~ <s>删除线（开启识别HTML标签时）</s>
+
+*斜体字*      _斜体字_
+
+**粗体**  __粗体__
+
+***粗斜体*** ___粗斜体___
+
+上标：X<sub>2</sub>，下标：O<sup>2</sup>
+
+**缩写(同HTML的abbr标签)**
+> 即更长的单词或短语的缩写形式，前提是开启识别HTML标签时，已默认开启
+
+### 引用 Blockquotes
+
+> 引用文本 Blockquotes
+
+引用的行内混合 Blockquotes
+
+> 引用：如果想要插入空白换行`即<br />标签`，在插入处先键入两个以上的空格然后回车即可，[普通链接](https://www.xxx.com/)。
+
+### 锚点与链接 Links
+[普通链接](https://www.xxx.com/)
+[普通链接带标题](https://www.xxx.com/ "普通链接带标题")
+直接链接：<https://www.xxx.com>
+[锚点链接][anchor-id]
+[anchor-id]: https://www.xxx.com/
+[mailto:test.test@gmail.com](mailto:test.test@gmail.com)
+GFM a-tail link @pandao
+邮箱地址自动链接 test.test@gmail.com  www@vip.qq.com
+> @pandao
+
+### 多语言代码高亮 Codes
+
+#### 行内代码 Inline code
+
+
+执行命令：`npm install marked`
+
+#### 缩进风格
+
+即缩进四个空格，也做为实现类似 `<pre>` 预格式化文本 ( Preformatted Text ) 的功能。
+
+        <?php
+        echo "Hello world!";
+    ?>
+        预格式化文本：
+
+    | First Header  | Second Header |
+    | ------------- | ------------- |
+    | Content Cell  | Content Cell  |
+    | Content Cell  | Content Cell  |
+
+#### JS代码
+```javascript
+function test() {
+	console.log("Hello world!");
+}
+```
+
+#### HTML 代码 HTML codes
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <mate charest="utf-8" />
+        <meta name="keywords" content="Editor.md, Markdown, Editor" />
+        <title>Hello world!</title>
+        <style type="text/css">
+            body{font-size:14px;color:#444;font-family: "Microsoft Yahei", Tahoma, "Hiragino Sans GB", Arial;background:#fff;}
+            ul{list-style: none;}
+            img{border:none;vertical-align: middle;}
+        </style>
+    </head>
+    <body>
+        <h1 class="text-xxl">Hello world!</h1>
+        <p class="text-green">Plain text</p>
+    </body>
+</html>
+```
+### 图片 Images
+
+图片加链接 (Image + Link)：
+
+
+[![](assets/images/markdown.png)](assets/images/markdown.png "markdown")
+
+> Follow your heart.
+
+----
+### 列表 Lists
+
+#### 无序列表（减号）Unordered Lists (-)
+
+- 列表一
+- 列表二
+- 列表三
+
+#### 无序列表（星号）Unordered Lists (*)
+
+* 列表一
+* 列表二
+* 列表三
+
+#### 无序列表（加号和嵌套）Unordered Lists (+)
++ 列表一
++ 列表二
+    + 列表二-1
+    + 列表二-2
+    + 列表二-3
++ 列表三
+    * 列表一
+    * 列表二
+    * 列表三
+
+#### 有序列表 Ordered Lists (-)
+
+1. 第一行
+2. 第二行
+3. 第三行
+
+#### GFM task list
+
+- [x] GFM task list 1
+- [x] GFM task list 2
+- [ ] GFM task list 3
+    - [ ] GFM task list 3-1
+    - [ ] GFM task list 3-2
+    - [ ] GFM task list 3-3
+- [ ] GFM task list 4
+    - [ ] GFM task list 4-1
+    - [ ] GFM task list 4-2
+
+----
+
+### 绘制表格 Tables
+
+| 项目        | 价格   |  数量  |
+| --------   | -----:  | :----:  |
+| 计算机      | $1600   |   5     |
+| 手机        |   $12   |   12   |
+| 管线        |    $1    |  234  |
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
+| Function name | Description                    |
+| ------------- | ------------------------------ |
+| `help()`      | Display the help window.       |
+| `destroy()`   | **Destroy your computer!**     |
+
+| Left-Aligned  | Center Aligned  | Right Aligned |
+| :------------ |:---------------:| -----:|
+| col 3 is      | some wordy text | $1600 |
+| col 2 is      | centered        |   $12 |
+| zebra stripes | are neat        |    $1 |
+
+| Item      | Value |
+| --------- | -----:|
+| Computer  | $1600 |
+| Phone     |   $12 |
+| Pipe      |    $1 |
+
+----
+
+#### 特殊符号 HTML Entities Codes
+
+&copy; &  &uml; &trade; &iexcl; &pound;
+&amp; &lt; &gt; &yen; &euro; &reg; &plusmn; &para; &sect; &brvbar; &macr; &laquo; &middot;
+
+X&sup2; Y&sup3; &frac34; &frac14;  &times;  &divide;   &raquo;
+
+18&ordm;C  &quot;  &apos;
+
+[========]
+
+### Emoji表情 :smiley:
+
+> Blockquotes :star:
+
+#### GFM task lists & Emoji & fontAwesome icon emoji & editormd logo emoji :editormd-logo-5x:
+
+- [x] :smiley: @mentions, :smiley: #refs, [links](), **formatting**, and <del>tags</del> supported :editormd-logo:;
+- [x] list syntax required (any unordered or ordered list supported) :editormd-logo-3x:;
+- [x] [ ] :smiley: this is a complete item :smiley:;
+- [ ] []this is an incomplete item [test link](#) :fa-star: @pandao;
+- [ ] [ ]this is an incomplete item :fa-star: :fa-gear:;
+    - [ ] :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;
+    - [ ] :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);
+
+#### 反斜杠 Escape
+
+\*literal asterisks\*
+
+[========]
+### 科学公式 TeX(KaTeX)
+
+$$E=mc^2$$
+
+行内的公式$$E=mc^2$$行内的公式，行内的$$E=mc^2$$公式。
+
+$$x > y$$
+
+$$\(\sqrt{3x-1}+(1+x)^2\)$$
+
+$$\sin(\alpha)^{\theta}=\sum_{i=0}^{n}(x^i + \cos(f))$$
+
+多行公式：
+
+```math
+\displaystyle
+\left( \sum\_{k=1}^n a\_k b\_k \right)^2
+\leq
+\left( \sum\_{k=1}^n a\_k^2 \right)
+\left( \sum\_{k=1}^n b\_k^2 \right)
+```
+```katex
+\displaystyle
+    \frac{1}{
+        \Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{
+        \frac25 \pi}} = 1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {
+        1+\frac{e^{-6\pi}}
+        {1+\frac{e^{-8\pi}}
+         {1+\cdots} }
+        }
+    }
+```
+```latex
+f(x) = \int_{-\infty}^\infty
+    \hat f(\xi)\,e^{2 \pi i \xi x}
+    \,d\xi
+```
+### 分页符 Page break
+
+> Print Test: Ctrl + P
+
+[========]
+
+### 绘制流程图 Flowchart
+
+```flow
+st=>start: 用户登陆
+op=>operation: 登陆操作
+cond=>condition: 登陆成功 Yes or No?
+e=>end: 进入后台
+
+st->op->cond
+cond(yes)->e
+cond(no)->op
+```
+[========]
+
+### 绘制序列图 Sequence Diagram
+
+```seq
+Andrew->China: Says Hello
+Note right of China: China thinks\nabout it
+China-->Andrew: How are you?
+Andrew->>China: I am good thanks!
+```
+### End
+    </textarea>
+</div>
+
+<!-- Modal -->
+<b-modal id="modal-redirect" body-class="br5" centered hide-header="true" hide-footer="true">
+    <b-row class="mrldesc15">
+        <b-link type="button" href="index.html" class="col mrl5 btn btn-outline-primary btn-sm">首页</b-link>
+        <b-link type="button" href="index.html" class="col mrl5 btn btn-outline-primary btn-sm">搜索</b-link>
+        <b-link type="button" href="list.html" class="col mrl5 btn btn-outline-primary btn-sm">列表</b-link>
+        <b-link type="button" href="details.html" class="col mrl5 btn btn-outline-primary btn-sm">详情</b-link>
+        <b-link type="button" href="personal.html" class="col mrl5 btn btn-outline-primary btn-sm">个人中心</b-link>
+    </b-row>
+</b-modal>
+
+<!-- Modal -->
+<b-modal modal-class="leftright-slide top-align" ok-title="发布" cancel-title="取消" size="full" id="SaveDataModal" title="发布资源/文章">
+    <b-container>
+        <b-form ref="resource-form">
+            <b-row>
+                <b-col class="form-group">
+                    <b-input-group prepend="名称">
+                        <b-input v-model="form.title" style="flex: 3 1 0;border-right: none;" placeholder="Python高级编程和异步IO并发编程"></b-input>
+                        <div class="input-group-prepend"><div class="input-group-text">分类</div></div>
+                        <b-form-select v-model="form.category">
+                            <b-form-select-option-group label="Python">
+                                <b-form-select-option value="1.1">[Python]Django</b-form-select-option>
+                                <b-form-select-option value="1.2">[Python]Falsk</b-form-select-option>
+                            </b-form-select-option-group>
+                        </b-form-select>
+                    </b-input-group>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-col class="form-group">
+                    <b-input-group prepend="简介">
+                        <b-form-textarea v-model="form.synopsis" maxlength="255" placeholder="资源简介，最多不能超过255个字符"></b-form-textarea>
+                    </b-input-group>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-col class="form-group">
+                    <b-input-group prepend="类型">
+                        <div class="form-control">
+                            <b-form-checkbox v-model="form.resource" class="custom-control-inline" switch>资源</b-form-checkbox>
+                            <b-form-checkbox v-model="form.article" class="custom-control-inline" switch>文章</b-form-checkbox>
+                        </div>
+                    </b-input-group>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-col class="form-group">
+                    <b-input-group prepend="缩略图">
+                        <div class="form-control container-box">
+                            <div class="cropped">
+                                <div @click="$bvModal.show('photoList')" class="cropped-img-box thumbnail">
+                                    <div class="bg-img" :style="'background-image:url('+form.thumbnail+')'">点击选择文件</div>
+                                </div>
+                            </div>
+                        </div>
+                    </b-input-group>
+                </b-col>
+            </b-row>
+            <b-row v-for="(item, i ) in form.links">
+                <b-col class="form-group">
+                    <b-input-group prepend="链接1">
+                        <b-input v-model="item.href" style="flex: 8 1 0;border-right: none;" placeholder="https://x.x.x/1mNJF3B"></b-input>
+                        <div class="input-group-prepend"><div class="input-group-text">密码</div></div>
+                        <b-input v-model="item.password" placeholder="c88d"></b-input>
+                    </b-input-group>
+                </b-col>
+            </b-row>
+        </b-form>
+        <b-button variant="outline-primary" @click="addResourceLink">添加链接</b-button>
+        <p v-text="form"></p>
+    </b-container>
+</b-modal>
+
+<!-- Modal -->
+<b-modal modal-class="leftright-slide top-align" @ok="$bvModal.show('uploadPhoto')" cancel-title="关闭" ok-title="图片列表" size="full" id="photoList" title="图片列表">
+    <link rel="stylesheet" href="assets/css/index/picture.css">
+    <div v-for="(item, index) in demo" @click="selectPicture" class="img-div" :id="index" :style="'background-image:url(assets/images/mv'+index+'.png)'"><div class="img-div-txt">16:8</div></div>
+    <template v-slot:modal-footer="{ cancel }">
+        <b-button @click="cancel()">取消</b-button>
+        <b-button variant="primary" @click="$bvModal.show('uploadPhoto')">上传图片</b-button>
+    </template>
+</b-modal>
+
+<!-- Modal -->
+<b-modal modal-class="leftright-slide top-align" title="图片裁剪上传" footer-class="d-flex justify-content-between" body-class="d-flex justify-content-center align-items-center" size="full" id="uploadPhoto">
+    <link rel="stylesheet" href="assets/css/index/upload_picture.css">
+    <div class="container-box imageBox">
+        <div class="thumbBox"></div>
+        <div class="spinner" style="display: block"></div>
+    </div>
+    <div class="img-preview">
+        <div class="preview-img"></div>
+        <div class="preview-img"></div>
+        <div class="preview-txt"></div>
+    </div>
+    <template v-slot:modal-footer="{ cancel }">
+        <b-button class="btn open-input-file">
+            <input type="file" accept="image/x-png,image/jpeg,image/jpg" id="upload-file"/>
+            <b-button type="button" class="btn btn-secondary">打开文件...</b-button>
+        </b-button>
+        <b-button variant="primary">开始上传</b-button>
+    </template>
+</b-modal>
+
+<script src="assets/plugins/jquery-2.2.4.min.js"></script>
+<script src="assets/plugins/editor.md/editormd.js"></script>
+<script src="assets/js/cropbox.js"></script>
+<script src="assets/js/upload_picture.js"></script>
+
+<script src="assets/plugins/vue/vue.min.js"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap-vue.min.js"></script>
+
+<script src="assets/js/publish.js"></script>
+</body>
+</html>

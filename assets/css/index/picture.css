@@ -1,0 +1,27 @@
+#photoList .modal-body {
+  padding: 7px;
+  overflow-y: scroll; }
+  #photoList .modal-body .img-div {
+    float: left;
+    margin-left: 1px;
+    position: relative;
+    border: 1px solid #007bff;
+    margin-bottom: 1px;
+    overflow: hidden;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    width: 13.125rem;
+    height: 7.375rem;
+    border-radius: 0.1875rem;
+    background-size: cover; }
+    #photoList .modal-body .img-div .img-div-txt {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 12px;
+      width: 100%;
+      color: #fff;
+      display: none;
+      background-color: rgba(0, 0, 0, 0.52); }
+    #photoList .modal-body .img-div:hover .img-div-txt {
+      display: block; }

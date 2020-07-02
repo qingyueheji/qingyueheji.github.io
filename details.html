@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>今夕何夕 - 首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap-vue.min.css">
+    <link rel="stylesheet" href="assets/plugins/font-awesome/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/index/details.css">
+
+    <!--当前页-->
+    <link rel="stylesheet" type="text/css" href="assets/plugins/editor.md/css/editormd.preview.css"/>
+    <script>
+        var positionMenu = false;
+    </script>
+</head>
+<body>
+<!-- Pre Loader-->
+<div class="loader-wrapper">
+    <div class="spinner">
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="length" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+    </div>
+</div>
+<!-- Pre Loader-->
+
+<!-- Header-->
+<b-navbar toggleable="sm" type="dark" fixed="top">
+    <b-navbar-brand href="#">今夕何夕</b-navbar-brand>
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+    <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav class="ml-auto">
+            <b-nav-item href="index.html">首页</b-nav-item>
+            <b-nav-item href="list.html">列表</b-nav-item>
+            <b-nav-item href="details.html">详情</b-nav-item>
+            <b-nav-item href="publish.html">发布</b-nav-item>
+            <b-nav-item-dropdown text="个人中心" right>
+                <b-dropdown-item href="personal.html">个人中心</b-dropdown-item>
+                <b-dropdown-item href="#">退出登录</b-dropdown-item>
+            </b-nav-item-dropdown>
+        </b-navbar-nav>
+    </b-collapse>
+</b-navbar>
+
+<!--导航菜单-->
+<b-container fluid class="menu-wrap">
+    <b-container fluid class="menu-wrap-nav">
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z1"><i
+                class="fa fa-paint-brush"></i>&nbsp;UI <i class="fa fa-angle-down"></i></b-link>
+        |
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z2"><i
+                class="fa fa-keyboard-o"></i>&nbsp;输入 <i class="fa fa-angle-down"></i></b-link>
+        |
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z3"><i
+                class="fa fa-film"></i>&nbsp;媒体 <i class="fa fa-angle-down"></i></b-link>
+        |
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z4"><i
+                class="fa fa-paper-plane-o"></i>&nbsp;导航 <i class="fa fa-angle-down"></i></b-link>
+        |
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z5"><i
+                class="fa fa-dropbox"></i>&nbsp;其他 <i class="fa fa-angle-down"></i></b-link>
+        |
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i
+                class="fa fa-th-large"></i>&nbsp;网页模板
+        </b-link>
+        |
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i
+                class="fa fa-tablet"></i>&nbsp;APP模板
+        </b-link>
+        |
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i
+                class="fa fa-file-code-o"></i>&nbsp;常用代码
+        </b-link>
+        |
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i
+                class="fa fa-code"></i>&nbsp;在线代码
+        </b-link>
+    </b-container>
+
+    <b-container @mouseenter.stop="enterMenuContent" @mouseleave.stop="leaveMenuContent" fluid class="menu-content"
+                 ref="menu-content" style="display: none;">
+        <b-container>
+            <b-row ref="z1" style="display: none;">
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-delicious"></i>背景</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-bell-o"></i>对话框</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-sort-numeric-desc"></i>筛选及排序</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-comments-o"></i>反馈</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-stack-overflow"></i>弹出层</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-hand-o-up"></i>悬停</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-th-large"></i>布局</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-bar-chart"></i>图表</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-spinner"></i>加载</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-circle-o"></i>圆边</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-long-arrow-down"></i>滚动</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-tags"></i>标签</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-link"></i>文本链接</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-info-circle"></i>工具提示</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-code-fork"></i>网络类型</b-link>
+                </b-col>
+            </b-row>
+            <b-row ref="z2" style="display: none;">
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-eyedropper"></i>拾色器</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-paint-brush"></i>定制和风格</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-clock-o"></i>日期和时间</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-arrows"></i>拖和放</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-keyboard-o"></i>通用输入</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-calculator"></i>自动完成</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-lock"></i>密码</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-thumbs-up"></i>投票率</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-search"></i>搜索</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-caret-square-o-down"></i>选择框</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-adn"></i>快捷键</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-hand-o-down"></i>触摸</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-h-square"></i>丰富的输入</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-upload"></i>上传</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-key"></i>验证</b-link>
+                </b-col>
+            </b-row>
+            <b-row ref="z3" style="display: none;">
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-play-circle-o"></i>音频和视频</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-exchange"></i>幻灯片和轮播图</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-eye"></i>图片展示</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-picture-o"></i>图像</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-map-marker"></i>地图</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-arrows-h"></i>滑块和旋转</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-folder-o"></i>Tabs</b-link>
+                </b-col>
+            </b-row>
+            <b-row ref="z4" style="display: none;">
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-long-arrow-right"></i>水平导航</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-long-arrow-down"></i>垂直导航</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-sitemap"></i>文件树</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-chevron-right"></i>分页</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-trello"></i>手风琴菜单</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-location-arrow"></i>其他导航</b-link>
+                </b-col>
+            </b-row>
+            <b-row ref="z5" style="display: none;">
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-rocket"></i>动画效果</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-expand"></i>浏览/预览器调整</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-arrows-v"></i>移动</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-cogs"></i>独立的部件</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-gift"></i>杂项</b-link>
+                </b-col>
+                <b-col cols="6" sm="4" md="3">
+                    <b-link href="#"><i class="fa fa-gamepad"></i>游戏</b-link>
+                </b-col>
+            </b-row>
+        </b-container>
+    </b-container>
+</b-container>
+
+<!-- 内容 -->
+<b-container fluid class="wrap-content">
+    <b-container>
+        <b-row>
+            <b-card class="article">
+                <b-container fluid>
+                   <b-row>
+                       <b-col lg="4" class="article-img">
+                           <b-img thumbnail fluid src="assets/images/mv28.png" alt="assets/images/IMG_1216.JPG"></b-img>
+                       </b-col>
+                       <b-col tag="ul" class="article-info">
+                           <li><h5>Android开发高级进阶内涵段子APP项目实战教程</h5></li>
+                           <b-container fluid tag="li">
+                               <b-row class="article-aria">
+                                   <b-col cols="4"><i class="fa fa-folder" aria-hidden="true"></i>&nbsp;类别：APP</b-col>
+                                   <b-col cols="4"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;下载：2次</b-col>
+                                   <b-col cols="4"><i class="fa fa-comment" aria-hidden="true"></i>&nbsp;评论：6次</b-col>
+                                   <b-col cols="4"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;大小：未知</b-col>
+                                   <b-col cols="4"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp;浏览：675次</b-col>
+                                   <b-col cols="4"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;时间：2019-01-04</b-col>
+                               </b-row>
+                            </b-container>
+                           <li>本课程带你从框架入手，开启我们的Android进阶之旅，开始写一步一步完善整个项目。Android开发高级进阶内涵段子APP项目实战课程视频教程下载。</li>
+                           <li>
+                               <b-button variant="primary"><i class="fa fa-cloud-download"></i>&nbsp;获取链接</b-button>
+                               <b-button variant="outline-primary"><i class="fa fa-heart-o"></i>&nbsp;收藏</b-button>
+                           </li>
+                       </b-col>
+                       <b-col lg="2" md="3" class="article-user">
+                           <h6>教程发布者信息</h6>
+                           <b-container fluid class="article-user-info">
+                               <b-row>
+                                   <div class="article-user-img"><b-link href="#"><b-img src="assets/images/mv0.png" alt="assets/images/zss4.png" /></b-link></div>
+                                   <div class="article-user-info-text">
+                                       <div><b-link href="#">今夕何夕</b-link></div>
+                                       <div><i class="fa fa-briefcase"></i>&nbsp;SVIP</div>
+                                   </div>
+                               </b-row>
+                           </b-container>
+                           <b-button block variant="outline-primary"><i class="fa fa-plus-circle"></i>&nbsp;关注TA</b-button>
+                           <b-button block variant="outline-primary"><i class="fa fa-plus-circle"></i>&nbsp;TA的主页</b-button>
+                       </b-col>
+                   </b-row>
+                </b-container>
+            </b-card>
+        </b-row>
+        <b-row>
+            <b-col id="editormd-view">
+                <textarea style="display:none;">
+## 谈谈自己对 RESTfulAPI 规范的认识
+
++ 其实本质就是一个规范
++ 这些规范让我们写API的时更好做区分
++ 更容易让后台处理
++ URL变得更简洁，前端更容易记得这些URL
++ 在url上可以体现出URL的操作
++ 二级域名跨域
+   + **域名规范**
+     + 子域名 api.arec.com
+     + 普通域名 www.arec.com/api/v1/xxx
+   + **CORS 解决跨域问题，加响应头**
+       + `header('Access-Control-Allow-Origin', 'http://localhost:3001');` 该字段必需,它的值是逗号分隔的一个字符串,表明服务器支持的所有跨域请求的方法。注意,返回的是所有支持的方法,而不单是浏览/预览器请求的那个方法,这是为了避免多次"预检"请求。
+       + `header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');`
+       + `header('Access-Control-Allow-Headers', 'Content-Type');` 如果浏览/预览器请求包括Access-Control-Request-Headers字段,则Access-Control-Allow-Headers字段是必需的。它也是一个逗号分隔的字符串,表明服务器支持的所有头信息字段,不限于浏览/预览器在"预检"中请求的字段。
++ JSONP 跨域
++ api版本(简单带过)
++ 状态码(简单带过)
++ method(简单带过)
+
+## 其他
++ 中间件
++ csrf
++ CBV
++ Django Rest Framework
+    + 如何验证(基于数据库实现用户认证)
+    + 源码流程(面向对象回顾流程)
++ 面向对象
+    + 封装(两类封装)相当于打包使用
+        + 把相同的属性和方法封装到类中
+        + View类:通过构造方法将一部分数据封装到每一个对象里面去
+    + 继承(如果多个类有共同的属性或方法可以提取到它的父类或基类里面去实现，这样就无须在每个类里面去重新写一遍)
+        + 单继承
+        + 多继承(从左往右找，找到结束)
+        + 广度优先
+        + 深度优先
+        + 经典类
+        + 形式类
+    + 多态(Python默认就是多态。`对象.什么`点出来就是支持的)
++ Django的生命周期
+    + CBV:请求进来url->wsgi->中间件->视图(函数或类)->dispatch反射找到视图函数，然后返回(如果是djangoredtframework，dispatch则是djangoredtframework的dispatch)
+
+```javascript
+document.onkeydown = function (ev) {
+    if (ev.ctrlKey && ev.key === 'f' || ev.key === 'F3') {
+        document.getElementById('search').focus();
+        return false;
+    }
+};
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="popover"]').popover({
+        trigger: 'hover'
+    })
+    $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this).scrollspy('refresh')
+    })
+})
+$(window).scroll(function () {
+    var menu_top = $('#menu_wrap').offset().top;
+    if ($(window).scrollTop() >= 200) {
+        $(".nav-bg").css("top", 40);
+        $(".nav-bg").css("position", "fixed");
+        $('#menu_wrap').addClass('menuFixed')
+    }
+    if ($(window).scrollTop() < 200) {
+        $(".nav-bg").css("position", "relative");
+        $(".nav-bg").css("top", 200);
+        $('#menu_wrap').removeClass('menuFixed')
+    }
+    if (n == 1) {
+        if ($(window).scrollTop() >= 30) {
+            $(".nav-bg").css("top", 40);
+            $(".nav-bg").css("position", "fixed");
+            $('#menu_wrap').addClass('menuFixed')
+        }
+        if ($(window).scrollTop() < 30) {
+            $(".nav-bg").css("position", "relative");
+            $('#menu_wrap').removeClass('menuFixed')
+        }
+    }
+});
+$(function () {
+    var sz = {};
+    var zid;
+    var pd1 = 0;
+    $(".nzz").hover(function () {
+        zid = $(this).attr('id');
+        sz[zid + '_timer'] = setTimeout(function () {
+            $('#zt').addClass('mh');
+            $(".nn").css("display", "none");
+            $(".nav-zi").css("display", "block");
+            $("#n" + zid).css("display", "block");
+            $("#n" + zid).addClass("nadc");
+            $(".nzz").removeClass("nav-zibg");
+            $("#" + zid).addClass("nav-zibg");
+            pd1 = 1;
+        }, 300);
+    }, function () {
+        clearTimeout(sz[zid + '_timer']);
+    });
+    $(".yn").mouseleave(function () {
+        $(".nav-zi").css("display", "none");
+        $('#zt').removeClass('mh');
+        $(".nzz").removeClass("nav-zibg");
+    });
+});
+$(document).ready(function () {
+    $(".nav-zi a").mouseover(function () {
+        $(this).children().removeClass("ls");
+    });
+    $(".nav-zi a").mouseout(function () {
+        $(this).children().addClass("ls");
+    });
+});
+
+jQuery.browser = {};
+(function () {
+    jQuery.browser.msie = false;
+    jQuery.browser.version = 0;
+    if (navigator.userAgent.match(/MSIE ([0-9]+)./)) {
+        jQuery.browser.msie = true;
+        jQuery.browser.version = RegExp.$1;
+    }
+})();
+```
+                </textarea>
+            </b-col>
+            <b-col cols="3" class="details-left">
+                <b-card tag="form" class="details-left-card-box">
+                    <div class="input-group">
+                        <b-form-input placeholder="搜索资源..."></b-form-input>
+                        <div class="input-group-prepend">
+                            <b-button variant="outline-light"><i class="fa fa-search"></i></b-button>
+                        </div>
+                    </div>
+                </b-card>
+                <b-card header-tag="h6" header="相关推荐 / HOT" class="details-left-card-box">
+                    <ul>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Flutter企业级商城项目开发实战课程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                    </ul>
+                </b-card>
+                <b-card header-tag="h6" header="最新发布 / NEW" class="details-left-card-box">
+                    <ul>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Flutter企业级商城项目开发实战课程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                        <li><b-link href="#"><i class="fa fa-caret-right"></i>&nbsp;Android开发高级进阶内涵段子APP项目实战教程</b-link></li>
+                    </ul>
+                </b-card>
+            </b-col>
+        </b-row>
+    </b-container>
+</b-container>
+
+</body>
+
+<script src="assets/plugins/vue/vue.min.js"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap-vue.min.js"></script>
+<!-- 当前页 -->
+<script src="assets/plugins/jquery-2.2.4.min.js"></script>
+<script src="assets/plugins/editor.md/editormd.js"></script>
+<script src="assets/plugins/editor.md/lib/underscore.min.js"></script>
+<script src="assets/plugins/editor.md/lib/raphael.min.js"></script>
+<script src="assets/plugins/editor.md/lib/sequence-diagram.min.js"></script>
+<script src="assets/plugins/editor.md/lib/flowchart.min.js"></script>
+<script src="assets/plugins/editor.md/lib/jquery.flowchart.min.js"></script>
+<script src="assets/plugins/editor.md/lib/marked.min.js"></script>
+<script src="assets/plugins/editor.md/lib/prettify.min.js"></script>
+
+<script src="assets/js/index.js"></script>
+</html>
