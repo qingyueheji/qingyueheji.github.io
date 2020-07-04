@@ -187,5 +187,6 @@ new Vue({
             document.body.style.overflowY = 'auto';
         });
         //endregion
+        this.$bvModal.show('login');
     }
 });
