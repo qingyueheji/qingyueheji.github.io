@@ -335,7 +335,7 @@ Andrew->>China: I am good thanks!
 </b-modal>
 
 <!-- Modal -->
-<b-modal modal-class="leftright-slide top-align" ok-title="发布" cancel-title="取消" size="full" id="SaveDataModal" title="发布资源/文章">
+<b-modal modal-class="leftright-slide top-align" size="full" id="SaveDataModal" title="发布资源/文章">
     <b-container>
         <b-form ref="resource-form">
             <b-row>
@@ -395,6 +395,10 @@ Andrew->>China: I am good thanks!
         <b-button variant="outline-primary" @click="addResourceLink">添加链接</b-button>
         <p v-text="form"></p>
     </b-container>
+    <template v-slot:modal-footer="{ cancel }">
+        <b-button @click="cancel()">取消</b-button>
+        <b-button variant="primary">发布</b-button>
+    </template>
 </b-modal>
 
 <!-- Modal -->

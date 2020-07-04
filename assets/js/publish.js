@@ -17,11 +17,8 @@ new Vue({
     },
     methods: {
         makeToast: function makeToast(message) {
-            var variant = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'warning';
-
             this.$bvToast.toast(message, {
                 title: "提示消息",
-                variant: variant,
                 autoHideDelay: 3000,
                 appendToast: false
             });
