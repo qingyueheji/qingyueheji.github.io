@@ -53,6 +53,8 @@
             <b-nav-item href="list.html">列表</b-nav-item>
             <b-nav-item href="details.html">详情</b-nav-item>
             <b-nav-item href="publish.html">发布</b-nav-item>
+            <b-nav-item v-b-modal.login href="javascript:void(0)">登录</b-nav-item>
+            <b-nav-item v-b-modal.register href="javascript:void(0)">注册</b-nav-item>
             <b-nav-item-dropdown text="个人中心" right>
                 <b-dropdown-item href="personal.html">个人中心</b-dropdown-item>
                 <b-dropdown-item href="#">退出登录</b-dropdown-item>
@@ -319,6 +321,101 @@
     </ul>
 </b-navbar>
 <!-- footer -->
+
+<!--登录/注册-->
+<b-modal id="login" centered title="用户登录">
+    <b-form class="login-register">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-envelope-o"></i></div>
+            </div>
+            <b-input placeholder="电子邮箱" v-model="loginForm.email"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-key"></i></div>
+            </div>
+            <b-input placeholder="密码" type="password" v-model="loginForm.password"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-qrcode"></i></div>
+            </div>
+            <b-input placeholder="验证码" v-model="loginForm.qrcode"></b-input>
+            <div class="input-group-prepend qrcode">
+                <img onclick="this.src='assets/images/qrcode.png?_t='+Date.now();" src="assets/images/qrcode.png" alt="">
+            </div>
+        </div>
+        <ul class="input-group third-party-logins d-flex justify-content-center">
+            <li><b-link><i class="fa fa-qq"></i></b-link></li>
+            <li><b-link><i class="fa fa-wechat"></i></b-link></li>
+            <li><b-link><i class="fa fa-github"></i></b-link></li>
+            <li><b-link><i class="fa fa-gitlab"></i></b-link></li>
+        </ul>
+        <ul class="input-group d-flex justify-content-end">
+            <li>暂无账号,点击<b-link @click="show_register_login(true)" href="javascript:void(0)">注册</b-link>&nbsp;&nbsp;</li>
+            <li><b-link href="javascript:void(0)">忘记密码</b-link></li>
+        </ul>
+    </b-form>
+
+    <template v-slot:modal-footer>
+        <b-button block variant="primary">&nbsp;&nbsp;&nbsp;&nbsp;登录&nbsp;&nbsp;&nbsp;&nbsp;</b-button>
+    </template>
+</b-modal>
+
+<b-modal id="register" centered title="新用户注册">
+    <b-form class="login-register">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-user-secret"></i></div>
+            </div>
+            <b-input placeholder="用户名" v-model="registerForm.username"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-envelope-o"></i></div>
+            </div>
+            <b-input placeholder="电子邮箱" v-model="registerForm.email"></b-input>
+            <div class="input-group-prepend">
+                <b-button variant="outline-primary" @click="sendEmail" ref="SendEmail" class="send-email">发送验证码</b-button>
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-envelope"></i></div>
+            </div>
+            <b-input placeholder="邮件验证码" v-model="registerForm.email_code"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-lock"></i></div>
+            </div>
+            <b-input placeholder="密码" type="password" v-model="registerForm.password"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-key"></i></div>
+            </div>
+            <b-input placeholder="密码" type="password" v-model="registerForm.ok_password"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-qrcode"></i></div>
+            </div>
+            <b-input placeholder="验证码" v-model="registerForm.qrcode"></b-input>
+            <div class="input-group-prepend qrcode">
+                <img onclick="this.src='assets/images/qrcode.png?_t='+Date.now();" src="assets/images/qrcode.png" alt="">
+            </div>
+        </div>
+        <ul class="input-group d-flex justify-content-end">
+            <li>已有账号,请<b-link @click="show_register_login(false)" href="javascript:void(0)">登录</b-link></li>
+        </ul>
+    </b-form>
+    <template v-slot:modal-footer>
+        <b-button block variant="primary">&nbsp;&nbsp;&nbsp;&nbsp;注册&nbsp;&nbsp;&nbsp;&nbsp;</b-button>
+    </template>
+</b-modal>
+<!--登录/注册-->
 </body>
 
 <script src="assets/plugins/jquery-1.11.1.min.js"></script>

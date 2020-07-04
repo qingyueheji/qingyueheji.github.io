@@ -496,6 +496,7 @@ jQuery.browser = {};
 </b-navbar>
 <!-- footer -->
 
+
 <!--登录/注册-->
 <b-modal id="login" centered title="用户登录">
     <b-form class="login-register">
@@ -532,9 +533,8 @@ jQuery.browser = {};
         </ul>
     </b-form>
 
-    <template v-slot:modal-footer="{ cancel }">
-        <b-button @click="cancel()">&nbsp;&nbsp;&nbsp;&nbsp;取消&nbsp;&nbsp;&nbsp;&nbsp;</b-button>
-        <b-button variant="primary">&nbsp;&nbsp;&nbsp;&nbsp;登录&nbsp;&nbsp;&nbsp;&nbsp;</b-button>
+    <template v-slot:modal-footer>
+        <b-button block variant="primary">&nbsp;&nbsp;&nbsp;&nbsp;登录&nbsp;&nbsp;&nbsp;&nbsp;</b-button>
     </template>
 </b-modal>
 
@@ -586,9 +586,8 @@ jQuery.browser = {};
             <li>已有账号,请<b-link @click="show_register_login(false)" href="javascript:void(0)">登录</b-link></li>
         </ul>
     </b-form>
-    <template v-slot:modal-footer="{ cancel }">
-        <b-button @click="cancel()">&nbsp;&nbsp;&nbsp;&nbsp;取消&nbsp;&nbsp;&nbsp;&nbsp;</b-button>
-        <b-button variant="primary">&nbsp;&nbsp;&nbsp;&nbsp;注册&nbsp;&nbsp;&nbsp;&nbsp;</b-button>
+    <template v-slot:modal-footer>
+        <b-button block variant="primary">&nbsp;&nbsp;&nbsp;&nbsp;注册&nbsp;&nbsp;&nbsp;&nbsp;</b-button>
     </template>
 </b-modal>
 <!--登录/注册-->
