@@ -40,15 +40,10 @@ new Vue({
             this.form['thumbnail'] = img_url;
         }
     },
-    beforeMount: function beforeMount() {
-        document.onreadystatechange = function () {
-            if (document.readyState === "complete") {
-                document.getElementsByClassName('loader-wrapper')[0].remove();
-            }
-        };
-    },
     mounted: function mounted() {
         var me = this;
+
+        //region 初始化富文本编辑器
         editormd("editormd", {
             codeFold: true,
             saveHTMLToTextarea: true, // 保存 HTML 到 Textarea
@@ -76,5 +71,14 @@ new Vue({
                 }
             }
         });
+        //endregion
+
+        //region 页面加载完成业务
+        document.onreadystatechange = function () {
+            if (document.readyState === "complete") {
+                document.getElementsByClassName('loader-wrapper')[0].remove();
+            }
+        };
+        //endregion
     }
 });

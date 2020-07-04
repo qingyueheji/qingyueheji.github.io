@@ -5,10 +5,10 @@ new Vue({
     data: {
         menu_id: undefined,
         demo: 20,
-        timeout: 0
+        timeout: 30
     },
     methods: {
-        // 添加菜单class(鼠标移入)
+        //region 添加菜单class(鼠标移入)
         enterAddClass: function enterAddClass(elem) {
             var target = elem.currentTarget;
             if (target.id) {
@@ -21,7 +21,9 @@ new Vue({
             }
         },
 
-        // 移除菜单class(鼠标移除)
+        //endregion
+
+        //region 移除菜单class(鼠标移除)
         leaveRemoveClass: function leaveRemoveClass(elem) {
             var target = elem.currentTarget;
             if (target.id) {
@@ -31,7 +33,9 @@ new Vue({
             target.className = '';
         },
 
-        // 子菜单展示(鼠标移入)
+        //endregion
+
+        //region 子菜单展示(鼠标移入)
         enterMenuContent: function enterMenuContent(elem) {
             var target = elem.currentTarget;
             target.style.display = 'block';
@@ -39,14 +43,18 @@ new Vue({
             document.getElementById(this.menu_id).className = 'nav-zibg';
         },
 
-        // 子菜单展示(鼠标移除)
+        //endregion
+
+        //region 子菜单展示(鼠标移除)
         leaveMenuContent: function leaveMenuContent(elem) {
             elem.currentTarget.style.display = 'none';
             this.$refs[this.menu_id].style.display = 'none';
             document.getElementById(this.menu_id).className = '';
         },
 
-        // 菜单导航滚动事件
+        //endregion
+
+        //region 菜单导航滚动事件
         menuWrapScrollEvent: function menuWrapScrollEvent() {
             if (positionMenu) {
                 var menuWrap = document.getElementsByClassName('menu-wrap')[0];
@@ -59,18 +67,105 @@ new Vue({
                     menuWrap.style.top = '';
                 }
             }
+        },
+
+        //endregion
+
+        //region 发送验证码
+        sendEmail: function sendEmail(elem) {
+            var me = this;
+            // 验证先 if()。。。
+            var target = elem.currentTarget;
+            target.disabled = true;
+            var timer = setInterval(function () {
+                console.log(me.timeout);
+                if (me.timeout < 0) {
+                    target.disabled = false;
+                    target.innerText = '\u53D1\u9001\u9A8C\u8BC1\u7801';
+                    localStorage.clear();
+                    me.timeout = 30;
+                    clearInterval(timer);
+                } else {
+                    target.innerText = '\u91CD\u53D1(' + me.timeout + 's)';
+                    localStorage.setItem('sendEmail', me.timeout);
+                    me.timeout--;
+                }
+            }, 1000);
+        },
+
+        //endregion
+
+        show_register_login: function show_register_login(is_status) {
+            if (is_status) {
+                this.$bvModal.hide('login');
+                this.$bvModal.show('register');
+            } else {
+                this.$bvModal.hide('register');
+                this.$bvModal.show('login');
+            }
         }
     },
-    beforeMount: function beforeMount() {
+    created: function created() {
+        var me = this;
+
+        //region 登录注册表单数数据
+        // is not login
+        me.loginForm = {
+            email: 'qingyueheji@qq.com',
+            password: 'qingyueheji@qq.com',
+            qrcode: 'wa74'
+            // is not login
+        };me.registerForm = {
+            username: '今夕何夕',
+            email: 'qingyueheji@qq.com',
+            email_code: 'xxxx',
+            password: 'qingyueheji@qq.com',
+            ok_password: 'qingyueheji@qq.com',
+            qrcode: 'wa74'
+            //endregion
+
+            //region 检测邮件发送剩余时间
+        };var surplus_timer = localStorage.getItem('sendEmail');
+        var timer = setInterval(function () {
+            var SendEmail = me.$refs.SendEmail;
+            if (SendEmail) {
+                if (!surplus_timer || surplus_timer < 0) {
+                    SendEmail.disabled = false;
+                    SendEmail.innerText = '\u53D1\u9001\u9A8C\u8BC1\u7801';
+                    localStorage.clear();
+                    clearInterval(timer);
+                } else {
+                    SendEmail.innerText = '\u91CD\u53D1(' + surplus_timer + 's)';
+                    localStorage.setItem('sendEmail', surplus_timer);
+                    surplus_timer--;
+                }
+            } else {
+                if (!surplus_timer || surplus_timer < 0) {
+                    localStorage.clear();
+                    clearInterval(timer);
+                } else {
+                    localStorage.setItem('sendEmail', surplus_timer);
+                    surplus_timer--;
+                }
+            }
+        }, 1000);
+        //endregion
+    },
+    mounted: function mounted() {
+        //region 页面加载完成业务
         document.onreadystatechange = function () {
             if (document.readyState === "complete") {
+                document.body.style.overflowY = 'auto';
                 document.getElementsByClassName('loader-wrapper')[0].remove();
             }
         };
-    },
-    mounted: function mounted() {
-        // 监听菜单滚动事件
+        //endregion
+
+        //region 监听菜单滚动事件
         window.addEventListener('scroll', this.menuWrapScrollEvent);
+        //endregion
+
+        //region 加载富文本编辑器
         try {
             editormd.markdownToHTML("editormd-view", {
                 htmlDecode: "style,script,iframe", // you can filter tags decode
@@ -81,5 +176,16 @@ new Vue({
                 sequenceDiagram: true // 默认不解析
             });
         } catch (e) {}
+        //endregion
+
+        //region 模态框显示隐藏滚动条设置
+        this.$root.$on('bv::modal::show', function (bvEvent, modalId) {
+            document.body.style.overflowY = 'hidden';
+        });
+
+        this.$root.$on('bv::modal::hidden', function (bvEvent, modalId) {
+            document.body.style.overflowY = 'auto';
+        });
+        //endregion
     }
 });

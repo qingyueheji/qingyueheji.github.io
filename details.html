@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>今夕何夕 - 首页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap-vue.min.css">
     <link rel="stylesheet" href="assets/plugins/font-awesome/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/index/details.css">
@@ -15,7 +15,7 @@
         var positionMenu = false;
     </script>
 </head>
-<body>
+<body style="overflow-y: hidden">
 <!-- Pre Loader-->
 <div class="loader-wrapper">
     <div class="spinner">
@@ -32,6 +32,7 @@
             <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
         </svg>
     </div>
+    <h5>加载中...</h5>
 </div>
 <!-- Pre Loader-->
 
@@ -45,6 +46,8 @@
             <b-nav-item href="list.html">列表</b-nav-item>
             <b-nav-item href="details.html">详情</b-nav-item>
             <b-nav-item href="publish.html">发布</b-nav-item>
+            <b-nav-item v-b-modal.login href="javascript:void(0)">登录</b-nav-item>
+            <b-nav-item v-b-modal.register href="javascript:void(0)">注册</b-nav-item>
             <b-nav-item-dropdown text="个人中心" right>
                 <b-dropdown-item href="personal.html">个人中心</b-dropdown-item>
                 <b-dropdown-item href="#">退出登录</b-dropdown-item>
@@ -492,6 +495,94 @@ jQuery.browser = {};
     </ul>
 </b-navbar>
 <!-- footer -->
+
+<!--登录/注册-->
+<b-modal id="login" centered title="用户登录">
+    <b-form class="login-register">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-envelope-o"></i></div>
+            </div>
+            <b-input placeholder="电子邮箱" v-model="loginForm.email"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-key"></i></div>
+            </div>
+            <b-input placeholder="密码" type="password" v-model="loginForm.password"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-qrcode"></i></div>
+            </div>
+            <b-input placeholder="验证码" v-model="loginForm.qrcode"></b-input>
+            <div class="input-group-prepend qrcode">
+                <img onclick="this.src='assets/images/qrcode.png?_t='+Date.now();" src="assets/images/qrcode.png" alt="">
+            </div>
+        </div>
+        <ul class="input-group d-flex justify-content-center">
+            <li>s</li>
+            <li>s</li>
+            <li>s</li>
+            <li>s</li>
+        </ul>
+        <ul class="input-group d-flex justify-content-end">
+            <li>暂无账号,点击<b-link @click="show_register_login(true)" href="javascript:void(0)">注册</b-link>&nbsp;&nbsp;</li>
+            <li><b-link href="javascript:void(0)">忘记密码</b-link></li>
+        </ul>
+    </b-form>
+</b-modal>
+
+<b-modal id="register" centered title="新用户注册">
+    <b-form class="login-register">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-user-secret"></i></div>
+            </div>
+            <b-input placeholder="用户名" v-model="registerForm.username"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-envelope-o"></i></div>
+            </div>
+            <b-input placeholder="电子邮箱" v-model="registerForm.email"></b-input>
+            <div class="input-group-prepend">
+                <b-button variant="outline-primary" @click="sendEmail" ref="SendEmail" class="send-email">发送验证码</b-button>
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-envelope"></i></div>
+            </div>
+            <b-input placeholder="邮件验证码" v-model="registerForm.email_code"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-lock"></i></div>
+            </div>
+            <b-input placeholder="密码" type="password" v-model="registerForm.password"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-key"></i></div>
+            </div>
+            <b-input placeholder="密码" type="password" v-model="registerForm.ok_password"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-qrcode"></i></div>
+            </div>
+            <b-input placeholder="验证码" v-model="registerForm.qrcode"></b-input>
+            <div class="input-group-prepend qrcode">
+                <img onclick="this.src='assets/images/qrcode.png?_t='+Date.now();" src="assets/images/qrcode.png" alt="">
+            </div>
+        </div>
+        <ul class="input-group d-flex justify-content-end">
+            <li>已有账号,请<b-link @click="show_register_login(false)" href="javascript:void(0)">登录</b-link></li>
+        </ul>
+    </b-form>
+</b-modal>
+<!--登录/注册-->
 </body>
 
 <script src="assets/plugins/vue/vue.min.js"></script>

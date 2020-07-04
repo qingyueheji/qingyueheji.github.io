@@ -8,6 +8,10 @@
   width: 100%;
   top: 0;
   left: 0; }
+  .loader-wrapper h5 {
+    position: relative;
+    top: calc(50% + 35px);
+    left: calc(50% - 33px); }
   .loader-wrapper .spinner {
     width: 4.125rem;
     height: 4.125rem;

@@ -11,7 +11,7 @@
         var positionMenu = true;
     </script>
 </head>
-<body>
+<body style="overflow-y: hidden">
 <!-- Pre Loader-->
 <div class="loader-wrapper">
     <div class="spinner">
@@ -28,6 +28,7 @@
             <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
         </svg>
     </div>
+    <h5>加载中...</h5>
 </div>
 <!-- Pre Loader-->
 
@@ -41,6 +42,8 @@
             <b-nav-item href="list.html">列表</b-nav-item>
             <b-nav-item href="details.html">详情</b-nav-item>
             <b-nav-item href="publish.html">发布</b-nav-item>
+            <b-nav-item v-b-modal.login href="javascript:void(0)">登录</b-nav-item>
+            <b-nav-item v-b-modal.register href="javascript:void(0)">注册</b-nav-item>
             <b-nav-item-dropdown text="个人中心" right>
                 <b-dropdown-item href="personal.html">个人中心</b-dropdown-item>
                 <b-dropdown-item href="#">退出登录</b-dropdown-item>
@@ -70,196 +73,76 @@
 <!--导航菜单-->
 <b-container fluid class="menu-wrap">
     <b-container fluid class="menu-wrap-nav">
-        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z1"><i
-                class="fa fa-paint-brush"></i>&nbsp;UI <i class="fa fa-angle-down"></i></b-link>
-        |
-        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z2"><i
-                class="fa fa-keyboard-o"></i>&nbsp;输入 <i class="fa fa-angle-down"></i></b-link>
-        |
-        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z3"><i
-                class="fa fa-film"></i>&nbsp;媒体 <i class="fa fa-angle-down"></i></b-link>
-        |
-        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z4"><i
-                class="fa fa-paper-plane-o"></i>&nbsp;导航 <i class="fa fa-angle-down"></i></b-link>
-        |
-        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z5"><i
-                class="fa fa-dropbox"></i>&nbsp;其他 <i class="fa fa-angle-down"></i></b-link>
-        |
-        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i
-                class="fa fa-th-large"></i>&nbsp;网页模板
-        </b-link>
-        |
-        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i
-                class="fa fa-tablet"></i>&nbsp;APP模板
-        </b-link>
-        |
-        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i
-                class="fa fa-file-code-o"></i>&nbsp;常用代码
-        </b-link>
-        |
-        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i
-                class="fa fa-code"></i>&nbsp;在线代码
-        </b-link>
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z1"><i class="fa fa-paint-brush"></i>&nbsp;UI <i class="fa fa-angle-down"></i></b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z2"><i class="fa fa-keyboard-o"></i>&nbsp;输入 <i class="fa fa-angle-down"></i></b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z3"><i class="fa fa-film"></i>&nbsp;媒体 <i class="fa fa-angle-down"></i></b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z4"><i class="fa fa-paper-plane-o"></i>&nbsp;导航 <i class="fa fa-angle-down"></i></b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" id="z5"><i class="fa fa-dropbox"></i>&nbsp;其他 <i class="fa fa-angle-down"></i></b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i class="fa fa-th-large"></i>&nbsp;网页模板</b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i class="fa fa-tablet"></i>&nbsp;APP模板</b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i class="fa fa-file-code-o"></i>&nbsp;常用代码</b-link>|
+        <b-link @mouseenter.stop="enterAddClass" @mouseleave.stop="leaveRemoveClass" href="#" target="_blank"><i class="fa fa-code"></i>&nbsp;在线代码</b-link>
     </b-container>
-    <b-container @mouseenter.stop="enterMenuContent" @mouseleave.stop="leaveMenuContent" fluid class="menu-content"
-                 ref="menu-content" style="display: none;">
+    <b-container @mouseenter.stop="enterMenuContent" @mouseleave.stop="leaveMenuContent" fluid class="menu-content" ref="menu-content" style="display: none;">
         <b-container>
             <b-row ref="z1" style="display: none;">
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-delicious"></i>背景</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-bell-o"></i>对话框</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-sort-numeric-desc"></i>筛选及排序</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-comments-o"></i>反馈</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-stack-overflow"></i>弹出层</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-hand-o-up"></i>悬停</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-th-large"></i>布局</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-bar-chart"></i>图表</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-spinner"></i>加载</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-circle-o"></i>圆边</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-long-arrow-down"></i>滚动</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-tags"></i>标签</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-link"></i>文本链接</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-info-circle"></i>工具提示</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-code-fork"></i>网络类型</b-link>
-                </b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-delicious"></i>背景</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-bell-o"></i>对话框</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-sort-numeric-desc"></i>筛选及排序</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-comments-o"></i>反馈</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-stack-overflow"></i>弹出层</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-hand-o-up"></i>悬停</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-th-large"></i>布局</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-bar-chart"></i>图表</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-spinner"></i>加载</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-circle-o"></i>圆边</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-long-arrow-down"></i>滚动</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-tags"></i>标签</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-link"></i>文本链接</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-info-circle"></i>工具提示</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-code-fork"></i>网络类型</b-link></b-col>
             </b-row>
             <b-row ref="z2" style="display: none;">
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-eyedropper"></i>拾色器</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-paint-brush"></i>定制和风格</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-clock-o"></i>日期和时间</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-arrows"></i>拖和放</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-keyboard-o"></i>通用输入</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-calculator"></i>自动完成</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-lock"></i>密码</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-thumbs-up"></i>投票率</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-search"></i>搜索</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-caret-square-o-down"></i>选择框</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-adn"></i>快捷键</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-hand-o-down"></i>触摸</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-h-square"></i>丰富的输入</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-upload"></i>上传</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-key"></i>验证</b-link>
-                </b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-eyedropper"></i>拾色器</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-paint-brush"></i>定制和风格</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-clock-o"></i>日期和时间</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-arrows"></i>拖和放</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-keyboard-o"></i>通用输入</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-calculator"></i>自动完成</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-lock"></i>密码</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-thumbs-up"></i>投票率</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-search"></i>搜索</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-caret-square-o-down"></i>选择框</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-adn"></i>快捷键</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-hand-o-down"></i>触摸</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-h-square"></i>丰富的输入</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-upload"></i>上传</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-key"></i>验证</b-link></b-col>
             </b-row>
             <b-row ref="z3" style="display: none;">
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-play-circle-o"></i>音频和视频</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-exchange"></i>幻灯片和轮播图</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-eye"></i>图片展示</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-picture-o"></i>图像</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-map-marker"></i>地图</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-arrows-h"></i>滑块和旋转</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-folder-o"></i>Tabs</b-link>
-                </b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-play-circle-o"></i>音频和视频</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-exchange"></i>幻灯片和轮播图</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-eye"></i>图片展示</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-picture-o"></i>图像</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-map-marker"></i>地图</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-arrows-h"></i>滑块和旋转</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-folder-o"></i>Tabs</b-link></b-col>
             </b-row>
             <b-row ref="z4" style="display: none;">
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-long-arrow-right"></i>水平导航</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-long-arrow-down"></i>垂直导航</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-sitemap"></i>文件树</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-chevron-right"></i>分页</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-trello"></i>手风琴菜单</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-location-arrow"></i>其他导航</b-link>
-                </b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-long-arrow-right"></i>水平导航</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-long-arrow-down"></i>垂直导航</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-sitemap"></i>文件树</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-chevron-right"></i>分页</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-trello"></i>手风琴菜单</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-location-arrow"></i>其他导航</b-link></b-col>
             </b-row>
             <b-row ref="z5" style="display: none;">
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-rocket"></i>动画效果</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-expand"></i>浏览/预览器调整</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-arrows-v"></i>移动</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-cogs"></i>独立的部件</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-gift"></i>杂项</b-link>
-                </b-col>
-                <b-col cols="6" sm="4" md="3">
-                    <b-link href="#"><i class="fa fa-gamepad"></i>游戏</b-link>
-                </b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-rocket"></i>动画效果</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-expand"></i>浏览/预览器调整</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-arrows-v"></i>移动</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-cogs"></i>独立的部件</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-gift"></i>杂项</b-link></b-col>
+                <b-col cols="6" sm="4" md="3"><b-link href="#"><i class="fa fa-gamepad"></i>游戏</b-link></b-col>
             </b-row>
         </b-container>
     </b-container>
@@ -338,6 +221,94 @@
     </ul>
 </b-navbar>
 <!-- footer -->
+
+<!--登录/注册-->
+<b-modal id="login" centered title="用户登录">
+    <b-form class="login-register">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-envelope-o"></i></div>
+            </div>
+            <b-input placeholder="电子邮箱" v-model="loginForm.email"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-key"></i></div>
+            </div>
+            <b-input placeholder="密码" type="password" v-model="loginForm.password"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-qrcode"></i></div>
+            </div>
+            <b-input placeholder="验证码" v-model="loginForm.qrcode"></b-input>
+            <div class="input-group-prepend qrcode">
+                <img onclick="this.src='assets/images/qrcode.png?_t='+Date.now();" src="assets/images/qrcode.png" alt="">
+            </div>
+        </div>
+        <ul class="input-group d-flex justify-content-center">
+            <li>s</li>
+            <li>s</li>
+            <li>s</li>
+            <li>s</li>
+        </ul>
+        <ul class="input-group d-flex justify-content-end">
+            <li>暂无账号,点击<b-link @click="show_register_login(true)" href="javascript:void(0)">注册</b-link>&nbsp;&nbsp;</li>
+            <li><b-link href="javascript:void(0)">忘记密码</b-link></li>
+        </ul>
+    </b-form>
+</b-modal>
+
+<b-modal id="register" centered title="新用户注册">
+    <b-form class="login-register">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-user-secret"></i></div>
+            </div>
+            <b-input placeholder="用户名" v-model="registerForm.username"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-envelope-o"></i></div>
+            </div>
+            <b-input placeholder="电子邮箱" v-model="registerForm.email"></b-input>
+            <div class="input-group-prepend">
+                <b-button variant="outline-primary" @click="sendEmail" ref="SendEmail" class="send-email">发送验证码</b-button>
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-envelope"></i></div>
+            </div>
+            <b-input placeholder="邮件验证码" v-model="registerForm.email_code"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-lock"></i></div>
+            </div>
+            <b-input placeholder="密码" type="password" v-model="registerForm.password"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-key"></i></div>
+            </div>
+            <b-input placeholder="密码" type="password" v-model="registerForm.ok_password"></b-input>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-qrcode"></i></div>
+            </div>
+            <b-input placeholder="验证码" v-model="registerForm.qrcode"></b-input>
+            <div class="input-group-prepend qrcode">
+                <img onclick="this.src='assets/images/qrcode.png?_t='+Date.now();" src="assets/images/qrcode.png" alt="">
+            </div>
+        </div>
+        <ul class="input-group d-flex justify-content-end">
+            <li>已有账号,请<b-link @click="show_register_login(false)" href="javascript:void(0)">登录</b-link></li>
+        </ul>
+    </b-form>
+</b-modal>
+<!--登录/注册-->
 </body>
 <script src="assets/plugins/vue/vue.min.js"></script>
 <script src="assets/plugins/bootstrap/js/bootstrap-vue.min.js"></script>
