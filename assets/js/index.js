@@ -56,17 +56,19 @@ new Vue({
 
         //region 菜单导航滚动事件
         menuWrapScrollEvent: function menuWrapScrollEvent() {
-            if (positionMenu) {
-                var menuWrap = document.getElementsByClassName('menu-wrap')[0];
-                var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-                if (scrollTop >= 195) {
-                    menuWrap.style.position = 'fixed';
-                    menuWrap.style.top = '44px';
-                } else {
-                    menuWrap.style.position = '';
-                    menuWrap.style.top = '';
+            try {
+                if (positionMenu) {
+                    var menuWrap = document.getElementsByClassName('menu-wrap')[0];
+                    var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+                    if (scrollTop >= 195) {
+                        menuWrap.style.position = 'fixed';
+                        menuWrap.style.top = '44px';
+                    } else {
+                        menuWrap.style.position = '';
+                        menuWrap.style.top = '';
+                    }
                 }
-            }
+            } catch (e) {}
         },
 
         //endregion
